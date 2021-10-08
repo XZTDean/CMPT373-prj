@@ -4,6 +4,7 @@ import './App.css';
 import Home from './Components/Home/Home'
 import Login from './Components/Login/Login'
 import Employees from './Components/Employees/Employees'
+import Matenity from './Components/Departments/Matenity'
 
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
@@ -22,7 +23,10 @@ function App() {
               <Link to="/login">Login</Link>
             </li>
             <li>
-              <Link to="/employees">employees</Link>
+              <Link to="/employees">Employees</Link>
+            </li>
+            <li>
+              <Link to="/matenity">Matenity</Link>
             </li>
           </ul>
         </nav>
@@ -37,6 +41,10 @@ function App() {
 
           <Route path="/employees">
             <Employees />
+          </Route>
+
+          <Route path="/matenity">
+            <Matenity />
           </Route>
         </Switch>
       </Router>
