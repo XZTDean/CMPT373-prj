@@ -1,6 +1,7 @@
 .with_border{
     border-style: solid;
-    font-size: 40px;
+    border-radius: 20px;
+    font-size: calc(1.5rem + 1vw);
     margin: 20px;
     height: 200px;
 }
@@ -23,7 +24,7 @@
     text-align: center;
 }
 .butt{
-    width:25%;
+    width:45%;
     align: center;
     font-size: 30px;
 }
@@ -35,10 +36,17 @@
     float: left;
     width:30%;
     text-align: center;
+    font-size: calc(1.5rem + 1.5vw);
 }
 
 #pointsTally{
     float: left;
     width:30%;
     text-align: center;
+    font-size: calc(1.5rem + 1.5vw);
+}
+#pointsTally_header{
+    text-align: center;
+    font-size: 30px;
+
 }
