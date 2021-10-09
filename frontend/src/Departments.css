@@ -1,0 +1,44 @@
+.with_border{
+    border-style: solid;
+    font-size: 40px;
+    margin: 20px;
+    height: 200px;
+}
+#caseStudy{
+    float: left;
+    width:30%;
+    text-align: center;
+}
+#data{
+    float: left;
+    width:30%;
+    text-align: center;
+}
+#empofMth{
+    float: left;
+    width:30%;
+    text-align: center;
+}
+#title{
+    text-align: center;
+}
+.butt{
+    width:25%;
+    align: center;
+    font-size: 30px;
+}
+.inner_mssg{
+    font-size: 20px;
+    tex-align: left;
+}
+#bioMech{
+    float: left;
+    width:30%;
+    text-align: center;
+}
+
+#pointsTally{
+    float: left;
+    width:30%;
+    text-align: center;
+}

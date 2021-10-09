@@ -4,9 +4,16 @@ import './App.css';
 import Home from './Components/Home/Home'
 import Login from './Components/Login/Login'
 import Employees from './Components/Employees/Employees'
-import Matenity from './Components/Departments/Matenity'
+import Maternity from './Components/Departments/Maternity'
 
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+
+
+const HomePage: React.FC = () =>{
+    return (
+        <div>My Home Page</div>
+    );
+}
 
 function App() {
   return (
@@ -26,7 +33,7 @@ function App() {
               <Link to="/employees">Employees</Link>
             </li>
             <li>
-              <Link to="/matenity">Matenity</Link>
+              <Link to="/maternity">Maternity</Link>
             </li>
           </ul>
         </nav>
@@ -43,8 +50,8 @@ function App() {
             <Employees />
           </Route>
 
-          <Route path="/matenity">
-            <Matenity />
+          <Route path="/maternity">
+            <Maternity />
           </Route>
         </Switch>
       </Router>
