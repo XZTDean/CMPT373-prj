@@ -5,6 +5,9 @@ import Home from './Components/Home/Home'
 import Login from './Components/Login/Login'
 import Employees from './Components/Employees/Employees'
 import Maternity from './Components/Departments/Maternity'
+import Rehab from './Components/Departments/Rehab'
+import Nicu_Paed from './Components/Departments/Nicu_Paed'
+import CommunityHealth from './Components/Departments/CommunityHealth'
 
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
@@ -35,6 +38,15 @@ function App() {
             <li>
               <Link to="/maternity">Maternity</Link>
             </li>
+            <li>
+              <Link to="/rehab">Rehab</Link>
+            </li>
+            <li>
+              <Link to="/nicu_paed">Nicu_Paed</Link>
+            </li>
+            <li>
+              <Link to="/communityhealth">CommunityHealth</Link>
+            </li>
           </ul>
         </nav>
         <Switch>
@@ -52,6 +64,18 @@ function App() {
 
           <Route path="/maternity">
             <Maternity />
+          </Route>
+
+          <Route path="/rehab">
+            <Rehab />
+          </Route>
+
+          <Route path="/nicu_paed">
+            <Nicu_Paed />
+          </Route>
+
+          <Route path="/communityhealth">
+            <CommunityHealth />
           </Route>
         </Switch>
       </Router>
