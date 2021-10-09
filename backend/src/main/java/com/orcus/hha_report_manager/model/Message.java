@@ -4,6 +4,8 @@ import org.apache.tomcat.jni.Local;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "messages")
@@ -31,6 +33,11 @@ public class Message {
     @Column(name = "content")
     private String content;
 
+    @Column(name = "replies")
+    @OneToMany(targetEntity = Reply.class, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "message_id", referencedColumnName = "id")
+    private List<Reply> replies;
+
     public Message() {
 
     }
@@ -42,6 +49,7 @@ public class Message {
         this.department = department;
         this.timestamp = timestamp;
         this.content = content;
+        this.replies = new ArrayList<Reply>();
     }
 
     public long getId() {
@@ -79,6 +87,10 @@ public class Message {
     public String getContent() { return content; }
 
     public void setContent(String content) { this.content = content; }
+
+    public void addReply(Reply reply) { replies.add(reply); }
+
+    public List<Reply> getReplies() { return this.replies; }
 
     @Override
     public String toString() {
