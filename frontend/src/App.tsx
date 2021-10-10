@@ -8,6 +8,7 @@ import Maternity from './Components/Departments/Maternity'
 import Rehab from './Components/Departments/Rehab'
 import Nicu_Paed from './Components/Departments/Nicu_Paed'
 import CommunityHealth from './Components/Departments/CommunityHealth'
+import Navbar from './Components/Navbar/Navbar'
 
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
@@ -23,7 +24,6 @@ function App() {
     <>
 
       <Router>
-        {/* <Navbar /> */}
         <nav>
           <ul>
             <li>
@@ -49,6 +49,8 @@ function App() {
             </li>
           </ul>
         </nav>
+
+        <Navbar />
         <Switch>
           <Route exact path="/">
             <Home />
