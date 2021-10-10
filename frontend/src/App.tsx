@@ -24,31 +24,31 @@ function App() {
     <>
 
       <Router>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/employees">Employees</Link>
-            </li>
-            <li>
-              <Link to="/maternity">Maternity</Link>
-            </li>
-            <li>
-              <Link to="/rehab">Rehab</Link>
-            </li>
-            <li>
-              <Link to="/nicu_paed">Nicu_Paed</Link>
-            </li>
-            <li>
-              <Link to="/communityhealth">CommunityHealth</Link>
-            </li>
-          </ul>
-        </nav>
+{/*         <nav> */}
+{/*           <ul> */}
+{/*             <li> */}
+{/*               <Link to="/">Home</Link> */}
+{/*             </li> */}
+{/*             <li> */}
+{/*               <Link to="/login">Login</Link> */}
+{/*             </li> */}
+{/*             <li> */}
+{/*               <Link to="/employees">Employees</Link> */}
+{/*             </li> */}
+{/*             <li> */}
+{/*               <Link to="/maternity">Maternity</Link> */}
+{/*             </li> */}
+{/*             <li> */}
+{/*               <Link to="/rehab">Rehab</Link> */}
+{/*             </li> */}
+{/*             <li> */}
+{/*               <Link to="/nicu_paed">Nicu/Paed</Link> */}
+{/*             </li> */}
+{/*             <li> */}
+{/*               <Link to="/communityhealth">Community Health</Link> */}
+{/*             </li> */}
+{/*           </ul> */}
+{/*         </nav> */}
 
         <Navbar />
         <Switch>

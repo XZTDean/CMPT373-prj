@@ -7,7 +7,7 @@ function Rehab() {
         <div id="wrapper">
             <h1 id="title">Rehab Home Page</h1>
             <div id="Hcontainer">
-                <div id="caseStudy" className="with_border">
+                <div className="with_border">
                     <Router>
                         <button className="butt">
                             <Link to="/rehab/casestudyPg">Case Study</Link>
@@ -15,7 +15,7 @@ function Rehab() {
                     </Router>
                     <div className="inner_mssg">Next Case Study will Due on:</div>
                 </div>
-                <div id="data" className="with_border">
+                <div className="with_border">
                     <Router>
                         <button className="butt">
                             <Link to="/rehab/datainputPg">Data</Link>
@@ -23,25 +23,25 @@ function Rehab() {
                     </Router>
                     <div className="inner_mssg">Next Data Submission will Due on:</div>
                 </div>
-                <div id="empofMth" className="with_border">
+                <div className="with_border">
                     <Router>
                         <button className="butt">
-                            <Link to="/rehab/empofmthpg">Employee Of Month</Link>
+                            <Link to="/rehab/empofmthPg">Employees</Link>
                         </button>
                     </Router>
-                    <div className="inner_mssg">Next Case Study will Due on:</div>
+                    <div className="inner_mssg">A list of employees</div>
                 </div>
-                <div id="bioMech" className="with_border">
+                <div className="with_border">
                     <Router>
                         <button className="butt">
-                            <Link to="/rehab/biomech">Biomechanic Support</Link>
+                            <Link to="/rehab/biomechPg">BioMech Support</Link>
                         </button>
                     </Router>
-                    <div className="inner_mssg">No message</div>
+                    <div className="inner_mssg">No messages</div>
                 </div>
                 <div id="pointsTally" className="with_border">
-                    <div>Your current points tally is:</div>
-                    <div className="inner_mssg">employee_score</div>
+                    <div id="pointsTally_header">Your current points tally is:</div>
+                    <div className="inner_mssg">Employee's score</div>
                 </div>
             </div>
         </div>
