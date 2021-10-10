@@ -3,6 +3,14 @@ import '../../Departments.css'
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 function Nicu_Paed() {
+
+    let currDate = new Date();
+    let month = currDate.getMonth() + 1;
+    let day = currDate.getDate();
+    let year = currDate.getFullYear();
+    let lastDay = new Date(year, month, 0);
+    let date = year+"/"+month+"/"+lastDay.getDate();
+
     return (
         <div id="wrapper">
             <h1 id="title">Nicu/Paed Home Page</h1>
@@ -13,7 +21,9 @@ function Nicu_Paed() {
                             <Link to="/nicu_paed/casestudyPg">Case Study</Link>
                         </button>
                     </Router>
-                    <div className="inner_mssg">Next Case Study will Due on:</div>
+                    <div className="inner_mssg">Next Case Study will Due on:
+                        <div className="inner_mssg">{date}</div>
+                    </div>
                 </div>
                 <div className="with_border">
                     <Router>
@@ -21,7 +31,9 @@ function Nicu_Paed() {
                             <Link to="/nicu_paed/datainputPg">Data</Link>
                         </button>
                     </Router>
-                    <div className="inner_mssg">Next Data Submission will Due on:</div>
+                    <div className="inner_mssg">Next Data Submission will Due on:
+                        <div className="inner_mssg">{date}</div>
+                    </div>
                 </div>
                 <div className="with_border">
                     <Router>

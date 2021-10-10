@@ -1,11 +1,28 @@
 import React from 'react'
 import '../../Departments.css'
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-// import '../../bootstrap5/bootstrap-5.0.0-beta1-dist/bootstrap.min.css';
-// import '../../bootstrap5/bootstrap-5.0.0-beta1-dist/bootstrap.bundle.min.js';
-//             <div className="text-center text-success fs-1">看到我居中，颜色绿色表示起作用了！</div>
+
+// function getMonthLast(){
+//     let date = new Date();
+//     let currentMonth = date.getMonth();
+//     let nextMonth = currentMonth;
+//     let nextMonthFirstDay = new Date(date.getFullYear(),nextMonth,1);
+//     let oneDay = 1000*60*60*24;
+//     let lastDate = date.getFullYear(nextMonthFirstDay-oneDay);
+//
+//     return lastDate;
+// }
+
 
 function Maternity() {
+
+    let currDate = new Date();
+    let month = currDate.getMonth() + 1;
+    let day = currDate.getDate();
+    let year = currDate.getFullYear();
+    let lastDay = new Date(year, month, 0);
+    let date = year+"/"+month+"/"+lastDay.getDate();
+
     return (
         <div id="wrapper">
             <h1 id="title">Maternity Home Page</h1>
@@ -16,7 +33,9 @@ function Maternity() {
                             <Link to="/maternity/casestudyPg">Case Study</Link>
                         </button>
                     </Router>
-                    <div className="inner_mssg">Next Case Study will Due on:</div>
+                    <div className="inner_mssg">Next Case Study will Due on:
+                        <div className="inner_mssg">{date}</div>
+                    </div>
                 </div>
                 <div className="with_border">
                     <Router>
@@ -24,7 +43,9 @@ function Maternity() {
                             <Link to="/maternity/datainputPg">Data</Link>
                         </button>
                     </Router>
-                    <div className="inner_mssg">Next Data Submission will Due on:</div>
+                    <div className="inner_mssg">Next Data Submission will Due on:
+                        <div className="inner_mssg">{date}</div>
+                    </div>
                 </div>
                 <div className="with_border">
                     <Router>
