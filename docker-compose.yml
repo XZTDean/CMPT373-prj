@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  java:
+    build:
+      context: .
+      dockerfile: java.Dockerfile
+
+  react:
+    build:
+      context: .
+      dockerfile: react.Dockerfile
+    port:
+      - 80:3000
+
+  db:
+    image: "postgres"
+    restart: always
+    environment:
+      POSTGRES_USER: hha
+      POSTGRES_PASSWORD: HHAdatabase
+      POSTGRES_DB: hha_db
+
