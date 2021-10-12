@@ -5,17 +5,23 @@ import Home from './Components/Home/Home'
 import Login from './Components/Login/Login'
 import Employees from './Components/Employees/Employees'
 import Navbar from './Components/Navbar/Navbar'
+import Maternity from './Components/Departments/Maternity'
+import Rehab from './Components/Departments/Rehab'
+import NicuPaed from './Components/Departments/NicuPaed'
+import CommunityHealth from './Components/Departments/CommunityHealth'
+import Messages from './Components/Messages/Messages'
 
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+
 
 function App() {
   return (
     <>
 
       <Router>
+
         <Navbar />
         <Switch>
-
           <Route exact path="/">
             <Home />
           </Route>
@@ -27,6 +33,27 @@ function App() {
           <Route path="/employees">
             <Employees />
           </Route>
+
+          <Route path="/maternity">
+            <Maternity />
+          </Route>
+
+          <Route path="/rehab">
+            <Rehab />
+          </Route>
+
+          <Route path="/nicu-paed">
+            <NicuPaed />
+          </Route>
+
+          <Route path="/communityhealth">
+            <CommunityHealth />
+          </Route>
+
+          <Route path="/messages">
+            <Messages />
+          </Route>
+
         </Switch>
       </Router>
     </>
