@@ -27,6 +27,7 @@ class Navbar extends React.Component {
                                             <Link to="/employees" className="nav-link active">Employees</Link>
                                         </li>
                                         <li className="nav-item">
+<<<<<<< Updated upstream
                                             <Link to="/maternity" className="nav-link active">Maternity</Link>
                                         </li>
                                         <li className="nav-item">
@@ -37,6 +38,9 @@ class Navbar extends React.Component {
                                         </li>
                                         <li className="nav-item">
                                             <Link to="/communityhealth" className="nav-link active">CommunityHealth</Link>
+=======
+                                            <Link to="/Messages" className="nav-link active">Messages</Link>
+>>>>>>> Stashed changes
                                         </li>
                                     </ul>
                                 </div>

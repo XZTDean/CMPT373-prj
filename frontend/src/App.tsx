@@ -5,10 +5,14 @@ import Home from './Components/Home/Home'
 import Login from './Components/Login/Login'
 import Employees from './Components/Employees/Employees'
 import Navbar from './Components/Navbar/Navbar'
+<<<<<<< Updated upstream
 import Maternity from './Components/Departments/Maternity'
 import Rehab from './Components/Departments/Rehab'
 import Nicu_Paed from './Components/Departments/NicuPaed'
 import CommunityHealth from './Components/Departments/CommunityHealth'
+=======
+import Messages from './Components/Messages/Messages'
+>>>>>>> Stashed changes
 
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
@@ -32,6 +36,7 @@ function App() {
             <Employees />
           </Route>
 
+<<<<<<< Updated upstream
           <Route path="/maternity">
             <Maternity />
           </Route>
@@ -48,6 +53,12 @@ function App() {
             <CommunityHealth />
           </Route>
 
+=======
+          <Route path="/Messages">
+            <Messages />
+          </Route>
+        
+>>>>>>> Stashed changes
         </Switch>
       </Router>
     </>
