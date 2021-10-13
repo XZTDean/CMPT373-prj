@@ -22,7 +22,6 @@ import com.orcus.hha_report_manager.model.Employee;
 import com.orcus.hha_report_manager.repository.EmployeeRepository;
 
 
-@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/api")
 public class EmployeeController {
