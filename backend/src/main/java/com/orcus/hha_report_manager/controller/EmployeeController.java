@@ -2,7 +2,6 @@ package com.orcus.hha_report_manager.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,21 +85,10 @@ public class EmployeeController {
 
         if (employeeData.isPresent()) {
             Employee employeeToChange = employeeData.get();
-            if(Objects.nonNull(employee.getFirstName())){
-                employeeToChange.setFirstName(employee.getFirstName());
-            }
-            if(Objects.nonNull(employee.getLastName())){
-                employeeToChange.setLastName(employee.getLastName());
-            }
-            if(Objects.nonNull(employee.getDepartment())){
-                employeeToChange.setDepartment(employee.getDepartment());
-            }
-            if(Objects.nonNull(employee.getScore())){
-                employeeToChange.setScore(employee.getScore());
-            }
-            if(Objects.nonNull(employee.isDepartmentHead())){
-                employeeToChange.setDepartmentHead(employee.isDepartmentHead());
-            }
+            employeeToChange.setFirstName(employee.getFirstName());
+            employeeToChange.setLastName(employee.getLastName());
+            employeeToChange.setDepartment(employee.getDepartment());
+            employeeToChange.setDepartmentHead(employee.isDepartmentHead());
             return new ResponseEntity<>(employeeRepository.save(employeeToChange), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
