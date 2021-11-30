@@ -1,9 +1,10 @@
 import axios from 'axios'
+import {ReportData, ReportMetadata} from "../Components/Report/report";
 
-const BASEURL = 'http://localhost:8080/api/reports/'
+const BASEURL = 'http://localhost:8080/api/newreports/'
 
-export function newReport(department: string) {
-    return axios.post(BASEURL, {"department":department}).then(res => res.data)
+export function newReport(reportMetadata: ReportMetadata) {
+    return axios.post(BASEURL, reportMetadata).then(res => res.data)
 }
 
 export function getReportById(id: number) {
@@ -12,6 +13,18 @@ export function getReportById(id: number) {
 
 export function getReportByDeptName(department: string) {
     return axios.get(BASEURL, {params: {department: department}}).then(res => res.data[0])
+}
+
+export function getReportByDeptID(departmentID: number) {
+    return axios.get(BASEURL, {params: {departmentId: departmentID}}).then(res => res.data)
+}
+
+export function changeReportMetadata(reportMetadata: ReportMetadata) {
+    return axios.put(BASEURL + reportMetadata.id, reportMetadata).then(res => res.data)
+}
+
+export function changeReportData(reportData: ReportData) {
+    return axios.put(BASEURL + reportData.id, reportData).then(res => res.data)
 }
 
 export function addEmptyQuestion(id: number) {
