@@ -8,7 +8,7 @@ class MessagesSubmit extends React.Component<any, any> {
 
   constructor(props: any) {
     super(props);
-    // this.isMounted = true;
+
     this.state = {};
   }
 

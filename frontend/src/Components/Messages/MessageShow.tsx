@@ -41,7 +41,7 @@ const Edit = (props: any) => {
 class MessageShow extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
-    // this.isMounted = true;
+
     this.state = {
       editIdEnable: "",
     };
