@@ -6,7 +6,7 @@ import Employees from "./Components/Employees/Employees";
 import Navbar from "./Components/Navbar/Navbar";
 import Departments from "./Components/Departments/Departments";
 import DepartmentHomePageTemplate from "./Components/Departments/DepartmentHomePageTemplate";
-import DataInput from "./Components/Departments/DataInput";
+import DataInput from "./Components/Report/DataInput";
 import Messages from "./Components/Messages/Messages";
 import Leaderboard from "./Components/Leaderboard/Leaderboard";
 import Api from "./API/Api";
