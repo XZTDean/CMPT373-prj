@@ -62,8 +62,9 @@ type RecordState = {
 };
 
 let reportId: number;
+let report: DataInput;
 
-class Metadata extends React.Component<{name: string, value: string, callback: any}, {isEdit: boolean, isShown: boolean}> {
+class Metadata extends React.Component<{name: string, value: string|undefined, callback: any}, {isEdit: boolean, isShown: boolean}> {
     private changedValue: string;
 
     constructor(props: {name: string, value: string, callback: any}) {
@@ -77,7 +78,9 @@ class Metadata extends React.Component<{name: string, value: string, callback: a
 
     render() {
         if (this.state.isEdit) {
-            this.changedValue = this.props.value;
+            if (this.props.value !== undefined) {
+                this.changedValue = this.props.value;
+            }
             return (<TextField fullWidth variant="standard" label={this.props.name} defaultValue={this.props.value}
                                InputProps={{
                                    endAdornment: (
@@ -122,7 +125,7 @@ class Metadata extends React.Component<{name: string, value: string, callback: a
     }
 }
 
-class MetadataArea extends React.Component<{month: string, user: string, submitted: boolean, changeMonth: any}, any> {
+class MetadataArea extends React.Component<{month: string|undefined, user: string|undefined, changeMonth: any}, any> {
 
     render() {
         return (
@@ -133,14 +136,11 @@ class MetadataArea extends React.Component<{month: string, user: string, submitt
                     p: 2,
                 }}>
                     <Grid container spacing={2}>
-                        <Grid item xs={4}>
+                        <Grid item xs={6}>
                             <Metadata name={"Month"} value={this.props.month} callback={this.props.changeMonth}/>
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={6}>
                             <Metadata name={"User"} value={this.props.user} callback={null}/>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Metadata name={"Submitted"} value={this.props.submitted.toString()} callback={null}/>
                         </Grid>
                     </Grid>
                 </Box>
@@ -487,7 +487,7 @@ class DataInput extends React.Component<any, RecordState> {
                     <Grid item xs={6}>
                         <h1 style={{marginLeft: "1em", marginRight: "1em"}}>{ name } Department Data Input</h1>
                     </Grid>
-                    <MetadataArea month={this.state.month} user={this.state.user} submitted={this.state.submitted} changeMonth={this.getData}/>
+                    <MetadataArea month={this.state.report?.metadata.month} user={this.state.report?.metadata.editedBy} changeMonth={this.getData}/>
                 </Grid>
                 <List style={{marginLeft: "1em", marginRight: "1em"}}>
                     {this.state.entryList}
