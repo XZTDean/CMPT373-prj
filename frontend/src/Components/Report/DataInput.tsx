@@ -26,7 +26,7 @@ import {
     deleteMultipleChoiceQuestion, answerMultipleChoiceQuestion, addWrittenQuestion,
     updateWrittenQuestion, deleteWrittenQuestion, answerWrittenQuestion, getReportByDeptID
 } from '../../API/reports';
-import {Report, ReportData, ReportMetadata, responseToReport} from "./report";
+import {Question, Report, ReportData, ReportMetadata, responseToReport} from "./report";
 
 const monthNames = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE",
                     "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
@@ -420,6 +420,62 @@ class RecordEntry extends React.Component<Props, EntryState> {
     }
 }
 
+class QuestionGroup extends React.Component<{groupName: string}, any> {
+    questions: any[];
+
+    constructor(props: {groupName: string}) {
+        super(props);
+        this.questions = []
+    }
+
+    createGroupQuestionList() {
+        let questionList: any[] = [];
+        report.state.report?.data.questions.forEach((value, index) => {
+            if (value.group === this.props.groupName) {
+                questionList.push((<RecordEntry question={value}/>)); // RecordEntry modify needed
+            }
+        })
+        this.questions = questionList;
+    }
+
+    createNewEntry() {
+        let question: Question = {
+            id: -1,
+            departmentId: report.props.location.state.id,
+            question: "",
+            answer: "",
+            choices: "",
+            group: this.props.groupName,
+            order: this.questions.length,
+            type: "numerical",
+        }
+        let changedReport = report.state.report;
+        changedReport?.data.questions.push(question);
+        report.setState({report: changedReport});
+    }
+
+    render() {
+        this.createGroupQuestionList();
+        return (
+            <Box sx={{
+                bgcolor: "#EBE4D5",
+                borderRadius: 3,
+                p: 2,
+            }}>
+                <List style={{marginLeft: "1em", marginRight: "1em"}}>
+                    {this.questions}
+                    <ListItem>
+                        <Button variant="contained" size="large" startIcon={<AddIcon fontSize="large"/>} onClick={() => {
+                            this.createNewEntry();
+                        }}>Add</Button>
+                    </ListItem>
+                </List>
+            </Box>
+        );
+    }
+
+}
+
 class DataInput extends React.Component<any, RecordState> {
     state: RecordState = {
         entryList: [],
@@ -432,6 +488,7 @@ class DataInput extends React.Component<any, RecordState> {
         const curr_month: string = monthNames[new Date().getMonth()]
         this.getData(curr_month);
         this.getData = this.getData.bind(this)
+        report = this;
     }
 
     private getData(curr_month: string) {
