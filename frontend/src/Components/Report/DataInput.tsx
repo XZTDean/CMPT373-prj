@@ -24,7 +24,7 @@ import {
     addEmptyQuestion, addQuestion, updateQuestion, deleteQuestion, answerQuestion,
     addMultipleChoiceQuestion, updateMultipleChoiceQuestion, updateMultipleChoiceQuestionChoice,
     deleteMultipleChoiceQuestion, answerMultipleChoiceQuestion, addWrittenQuestion,
-    updateWrittenQuestion, deleteWrittenQuestion, answerWrittenQuestion, getReportByDeptID
+    updateWrittenQuestion, deleteWrittenQuestion, answerWrittenQuestion, getReportByDeptID, changeReportData
 } from '../../API/reports';
 import {Question, Report, ReportData, ReportMetadata, responseToReport} from "./report";
 
@@ -432,7 +432,7 @@ class QuestionGroup extends React.Component<{groupName: string}, any> {
         let questionList: any[] = [];
         report.state.report?.data.questions.forEach((value, index) => {
             if (value.group === this.props.groupName) {
-                questionList.push((<RecordEntry question={value}/>)); // RecordEntry modify needed
+                questionList.push((<RecordEntry question={value} index={index}/>)); // RecordEntry modify needed
             }
         })
         this.questions = questionList;
@@ -457,20 +457,22 @@ class QuestionGroup extends React.Component<{groupName: string}, any> {
     render() {
         this.createGroupQuestionList();
         return (
-            <Box sx={{
-                bgcolor: "#EBE4D5",
-                borderRadius: 3,
-                p: 2,
-            }}>
-                <List style={{marginLeft: "1em", marginRight: "1em"}}>
-                    {this.questions}
-                    <ListItem>
-                        <Button variant="contained" size="large" startIcon={<AddIcon fontSize="large"/>} onClick={() => {
-                            this.createNewEntry();
-                        }}>Add</Button>
-                    </ListItem>
-                </List>
-            </Box>
+            <ListItem alignItems="flex-start">
+                <Box sx={{
+                    bgcolor: "#EBE4D5",
+                    borderRadius: 3,
+                    p: 2,
+                }}>
+                    <List style={{marginLeft: "1em", marginRight: "1em"}}>
+                        {this.questions}
+                        <ListItem>
+                            <Button variant="contained" size="large" startIcon={<AddIcon fontSize="large"/>} onClick={() => {
+                                this.createNewEntry();
+                            }}>Add</Button>
+                        </ListItem>
+                    </List>
+                </Box>
+            </ListItem>
         );
     }
 
@@ -536,8 +538,34 @@ class DataInput extends React.Component<any, RecordState> {
         })
     }
 
+    updateReportData() {
+        changeReportData(this.state.report?.data as ReportData).then(r => {
+            this.setState({report: responseToReport(r)});
+        })
+    }
+
+    getGroups() {
+        let groups = this.state.report?.data.groupings.split(";");
+        let questionGroups:any[] = [];
+
+        if (groups !== undefined) {
+            groups.sort((a, b) => {
+                let a_id: number = +a.substr(a.indexOf(":") + 1)
+                let b_id: number = +b.substr(b.indexOf(":") + 1)
+                return a_id - b_id;
+            })
+
+            groups.forEach(value => {
+                let groupName = value.substring(0, value.indexOf(":"));
+                questionGroups.push((<QuestionGroup groupName={groupName}/>))
+            })
+        }
+        return questionGroups;
+    }
+
     render() {
-      const name = this.props.location.state.department || null
+        const name = this.props.location.state.department || null
+        const questionGroups = this.getGroups();
         return (
             <div className="DataInput">
                 <Grid container spacing={2}>
@@ -547,11 +575,11 @@ class DataInput extends React.Component<any, RecordState> {
                     <MetadataArea month={this.state.report?.metadata.month} user={this.state.report?.metadata.editedBy} changeMonth={this.getData}/>
                 </Grid>
                 <List style={{marginLeft: "1em", marginRight: "1em"}}>
-                    {this.state.entryList}
+                    {questionGroups}
                     <ListItem>
                         <Button variant="contained" size="large" startIcon={<AddIcon fontSize="large"/>} onClick={() => {
-                            this.createNewEntry();
-                        }}>Add</Button>
+                            // this.createNewEntry();
+                        }}>Add Group</Button>
                     </ListItem>
                 </List>
             </div>
