@@ -485,6 +485,8 @@ class DataInput extends React.Component<any, RecordState> {
         report: null,
     };
 
+    private newGroupName :string = "";
+
     constructor(props: any) {
         super(props);
         const curr_month: string = monthNames[new Date().getMonth()]
@@ -563,6 +565,14 @@ class DataInput extends React.Component<any, RecordState> {
         return questionGroups;
     }
 
+    addNewGroup(groupName: string) {
+        if (this.state.report !== null) {
+            let changedReport: Report = this.state.report;
+            changedReport.data.groupings = changedReport?.data.groupings + ";" + groupName;
+            this.setState({report: changedReport});
+        }
+    }
+
     render() {
         const name = this.props.location.state.department || null
         const questionGroups = this.getGroups();
@@ -578,8 +588,12 @@ class DataInput extends React.Component<any, RecordState> {
                     {questionGroups}
                     <ListItem>
                         <Button variant="contained" size="large" startIcon={<AddIcon fontSize="large"/>} onClick={() => {
-                            // this.createNewEntry();
+                            this.addNewGroup(this.newGroupName);
                         }}>Add Group</Button>
+                        <TextField variant="standard" label="New Group Name" onChange={event => {
+                            this.newGroupName = event.target.value;
+                        }
+                        }/>
                     </ListItem>
                 </List>
             </div>
